@@ -1,9 +1,9 @@
 const sql = require('mssql');
 
 const config = {
-    user: 'lclark',
-    password: 'T@blePass!',
-    server: 'lclarkdb.database.windows.net', // You can use 'localhost\\instance' to connect to named instance
+    user: '*****',
+    password: '*****',
+    server: '*****.database.windows.net', // You can use 'localhost\\instance' to connect to named instance
     database: 'sales',
     // connectionTimeout: 1000,
     // requestTimeout: 1000,
