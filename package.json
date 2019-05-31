@@ -1,0 +1,28 @@
+{
+  "name": "tableaudbwbextensionsstn",
+  "version": "0.1.0",
+  "description": "Example code to support the extensions articles at tabblogs.com.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tabblogs/TableauDBWBExtensionsStN.git"
+  },
+  "keywords": [
+    "tableau",
+    "extensions"
+  ],
+  "author": "Larry Clark (lclark@tableau.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tabblogs/TableauDBWBExtensionsStN/issues"
+  },
+  "homepage": "https://github.com/tabblogs/TableauDBWBExtensionsStN#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.17.1"
+  }
+}
