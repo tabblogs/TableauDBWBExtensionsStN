@@ -7,5 +7,4 @@ tableau.extensions.initializeAsync().then(() => {
     dashboard.worksheets.forEach( worksheet => {
       $('#worksheets > tbody').append(`<tr><td>Worksheet: ${worksheet.name}<td><tr>`);
     });
-    
 });
