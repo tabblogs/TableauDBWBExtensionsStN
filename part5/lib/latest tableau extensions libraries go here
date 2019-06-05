@@ -1,0 +1,6 @@
+The libraries are excluded from version control through the following .gitignore line:
+
+tableau.extensions.*
+
+Plesae obtain the latest Tableau Extension libraries from github: 
+https://github.com/tableau/extensions-api/tree/master/lib
