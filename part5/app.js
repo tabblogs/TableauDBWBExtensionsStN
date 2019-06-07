@@ -18,4 +18,7 @@ app.use(express.static('./lib'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+const db = require("./public/javascripts/db");
+app.post("/getData", db.query);
+
 module.exports = app;
