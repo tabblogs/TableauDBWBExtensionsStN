@@ -1,11 +1,11 @@
-$(document).ready( () => {
-    let array = [1];
-    fetchData(array);
-});
+// $(document).ready( () => {
+//     let array = [1];
+//     postData(array);
+// });
 
-fetchData = (datapayloadObject) => {
+postData = (datapayloadObject) => {
     return new Promise( (resolve, reject) => {
-    fetch("/getData", {
+    fetch("/postData", {
       method: "POST",
       headers: {
         "Content-type": "application/json"
@@ -26,4 +26,13 @@ fetchData = (datapayloadObject) => {
         }
       });
     });
-  }
+}
+
+function postRank(){
+  var stateNames = $('#data_table').DataTable().columns(0).data().toArray()[0];
+  
+  postData(stateNames);
+  // stateNames.forEach(state => {
+  //   console.log(state)
+  // });
+}  

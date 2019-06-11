@@ -90,11 +90,3 @@ let dashboardDataSources = [];
 
 
 })();
-function postRank(){
-  var stateNames = $('#data_table').DataTable().columns(0).data().toArray()[0];
-  
-  stateNames.forEach(state => {
-    console.log(state)
-  });
-}  
-

@@ -19,6 +19,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 const db = require("./public/javascripts/db");
-app.post("/getData", db.query);
+app.post("/postData", db.query);
 
 module.exports = app;
