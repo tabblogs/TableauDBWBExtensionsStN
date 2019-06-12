@@ -87,6 +87,4 @@ let dashboardDataSources = [];
       return sheet.name === worksheetName;
     });
   }
-
-
 })();

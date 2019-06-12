@@ -30,10 +30,7 @@
 <body>
     <div class="container-fluid">
       <!-- Main UI -->
-      <div>
-        <b>What's your name? </b>
-        <input type="text" id="userName" value="Your name here"></input>
-      </div>
+
       <div id="selected_marks">
         <h4>
           Favorite states from <span class="sheet_name" id="selected_marks_title">Sheet Name</span>
@@ -44,6 +41,8 @@
         </div>
       </div>
       <div>
+        <label>What's your name? </label>
+        <input type="text" id="userName" placeholder="Your name here"></input>
         <button id="submitRank" onclick="postRank()">Submit My Ranking</button>
       </div>
     </div>
