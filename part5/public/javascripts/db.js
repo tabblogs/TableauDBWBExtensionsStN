@@ -5,6 +5,8 @@ const credentials = require("./credentials.js");
 
 exports.query = function(req,res){
     console.log("Running query function.")
+    console.log("Req.body: ", req.body);
+
     let data =  req.body.data;
 
     console.log("data: " + data);
@@ -35,6 +37,62 @@ exports.query = function(req,res){
         console.log("SQL Error:", err);
         sql.close();
     })
+};
+
+exports.insertData = function(req, res){
+    console.log("Running insertData function");
+    console.log("Req.body: ", req.body);
+    
+    let column = [];
+    let values = [];
+    
+    let data = req.body.data;
+    console.log("Data in insertData:", data)
+  
+    JSON.parse(data, (key, value) => {
+      //push into an array so we can use it the query
+      column.push(key.trim());
+      values.push(value);
+    });
+  
+    columnArray = column.filter(function(n) {
+      return n != "";
+    });
+  
+    valueArray = values.filter(function(n) {
+      if (Object.keys(n).length !== 0) {
+        return `'${n}'`;
+      }
+    });
+  
+    valueArray = addQuote(valueArray);
+  
+    //let newArr = arr.toString().replace(/,[0-9]/g, "");
+  
+    let insertQuery = `INSERT INTO ${
+      ranking.dbo.states
+    } (${columnArray}) VALUES (${arr3});`;
+  
+    console.log(insertQuery);
+  
+    //send the insertQuery
+    new sql.ConnectionPool(auth)
+      .connect()
+      .then(function(pool) {
+        return pool.request().query(insertQuery);
+      })
+      .then(function(result) {
+        console.log(result);
+        sql.close();
+      })
+      .catch(function(err) {
+        if (err) throw err;
+        sql.close();
+      });
+    res.end();
+  };
+  
+  function addQuote(val) {return val.length ? "'" + val.join("','") + "'" : "";
 }
 
 module.exports = exports;

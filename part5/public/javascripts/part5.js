@@ -68,6 +68,7 @@ let dashboardDataSources = [];
         data: data,
         columns: columns,
         autoWidth: true,
+        authHeight: true,
         deferRender: true,
         scroller: true,
         scrollY: height,

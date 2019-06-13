@@ -1,17 +1,21 @@
 // $(document).ready( () => {
-//     let array = [1];
+    
 //     postData(array);
 // });
 
-postData = (datapayloadObject) => {
-  //console.log(JSON.stringify(datapayloadObject));
+let stateList = [];
+
+postData = (insertData) => {
+  console.log("Running postData");
+  console.log("insertData: ",insertData);
+  
     return new Promise( (resolve, reject) => {
     fetch("/postData", {
       method: "POST",
       headers: {
         "Content-type": "application/json"
       },
-      body: JSON.stringify(datapayloadObject)
+      body: insertData
     })
       .then(function(response) {
         const r = response.json();
@@ -30,22 +34,49 @@ postData = (datapayloadObject) => {
 }
 
 function postRank(){
-  var stateNames = $('#data_table').DataTable().columns(0).data().toArray()[0];
-  var dataPayload = []; //= [$('#userName').val(),stateNames]
+  console.log("Running postRank")
+  var stateNames = $('#data_table').DataTable().columns(0).data().toArray()[0]; //push the first column of the html table into an array
+  var postObject = {};
+  var insertData = []; //= [$('#userName').val(),stateNames]
   const name = $('#userName').val();
 
   for(i=0;i<stateNames.length;i++){
     const state = stateNames[i];
     const index = i+1;
-    dataPayload.push(`{userName: ${name}, stateName: ${state}, stateRank: ${index}}`)
+    insertData.push({userName:name});
+    insertData.push({stateName:state});
+    insertData.push({stateRank:index});
   }
 
-  dataPayload.forEach(element => {
-    console.log("element: " + element);
-    // console.log(element[0]);  
-    // console.log(element[1]);  
-    // console.log(element[2]);  
-  });
+  console.log("insertData in postRank: ", insertData);
 
-  postData(dataPayload);
-}  
+  postObject.data = insertData;
+  postData(JSON.stringify(postObject));
+  //let post = JSON.stringify(insertData);
+  // let post = [{"username": "Larry", "stateName": "Texas", "stateRank": "1"}];
+
+  // console.log("Post in postRank():",post);
+  // postData(post);
+  // let foo = [];
+  // foo.push({userName: Larry});
+  // console.log(foo);
+  // postData(JSON.stringify(foo));
+};
+
+function postRank2(){
+  // get the input values
+  // let input = document.querySelectorAll("#data_table");
+  let input = $('#data_table').DataTable().columns(0).data().toArray()[0];
+  console.log("Input from postrank2: ", input);
+
+  Array.from(input).forEach(function(e) {
+    if (e.value !== "") {
+      console.log("E.value from postRank2 foreach: ", e.value);
+      stateList.push({ [e.id]: e.value });
+    }
+  });
+  console.log(stateList);
+  let data = JSON.stringify(stateList);
+
+  postData(data);
+}
