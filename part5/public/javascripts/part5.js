@@ -1,7 +1,3 @@
-// load routine from mssql_writeback_tableau-master
-let dataSourceFetchPromises = [];
-let dashboardDataSources = [];
-
 (function() {
     //load tableau extension
     tableau.extensions.initializeDialogAsync().then(()=> {
