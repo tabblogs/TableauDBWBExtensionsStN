@@ -8,8 +8,11 @@ exports.insertData = (req, res)=>{
     let values = [];
     
     let data = req.body.data;
+    console.log("Data: ",data)
   
     let jsondata = JSON.stringify(data);
+    console.log("JSON data:", jsondata);
+
     JSON.parse(jsondata, (key,value)=>{
         switch(key){
             case "userName":
@@ -27,8 +30,8 @@ exports.insertData = (req, res)=>{
     valueArray = values.substr(0,values.length-1);
   
     let insertQuery = `INSERT INTO ranking.dbo.states (userName,stateName,stateRank) VALUES ${valueArray};`;
-  
-    //console.log(insertQuery);
+    console.log(insertQuery);
+    //INSERT INTO ranking.dbo.states (userName,stateName,stateRank) VALUES ('LC','Colorado','1'),('LC','Tennessee','2'),('LC','Texas','3');
   
     //send the insertQuery
     new sql.ConnectionPool(credentials.config)
@@ -37,17 +40,15 @@ exports.insertData = (req, res)=>{
         return pool.request().query(insertQuery);
       })
       .then((result)=> {
-        console.log(result);
+        console.log("Result: ",result);
         sql.close();
       })
       .catch((err)=> {
+        console.log("Error caught in db transaction.")
         if (err) throw err;
         sql.close();
       });
     res.end(); 
-  };
-  
-  function addQuote(val) {return val.length ? "'" + val.join("','") + "'" : "";
-}
+};
 
 module.exports = exports;

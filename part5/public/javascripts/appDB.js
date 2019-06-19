@@ -1,8 +1,8 @@
 let stateList = [];
 
 postData = (insertData) => {
-  console.log("Running postData");
   console.log("insertData: ",insertData);
+  //insertData:  {"data":[{"userName":"LC"},{"stateName":"Colorado"},{"stateRank":1},{"userName":"LC"},{"stateName":"Tennessee"},{"stateRank":2},{"userName":"LC"},{"stateName":"Texas"},{"stateRank":3}]}
   
     return new Promise( (resolve, reject) => {
     fetch("/postData", {
