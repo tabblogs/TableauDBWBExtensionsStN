@@ -23,6 +23,6 @@
   "homepage": "https://github.com/tabblogs/TableauDBWBExtensionsStN#readme",
   "dependencies": {
     "ejs": "^2.6.1",
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   }
 }
